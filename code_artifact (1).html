@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зерно & Огонь — Спешелти-кофейня и ремесленная пекарня</title>
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Подключение шрифтов Inter и Cormorant Garamond -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Иконки FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    colors: {
+                        coffee: {
+                            50: '#FAF7F2',
+                            100: '#F2ECE1',
+                            200: '#E2D5C0',
+                            300: '#CCB696',
+                            400: '#B5946B',
+                            500: '#9C784E',
+                            600: '#805E3B',
+                            700: '#64482E',
+                            800: '#3E2D20',
+                            900: '#211812',
+                        },
+                        terracotta: '#C85A32'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-coffee-50 text-coffee-900 font-sans antialiased selection:bg-terracotta selection:text-white overflow-x-hidden">
+
+    <!-- ==================== 1. ШАПКА (HEADER) И МЕНЮ ==================== -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-coffee-900/95 backdrop-blur-md text-coffee-50 border-b border-coffee-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Логотип -->
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-terracotta flex items-center justify-center text-white shadow-lg group-hover:rotate-12 transition-transform">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                            <line x1="6" y1="1" x2="6" y2="4"></line>
+                            <line x1="10" y1="1" x2="10" y2="4"></line>
+                            <line x1="14" y1="1" x2="14" y2="4"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl font-bold tracking-wide block leading-none">Зерно & Огонь</span>
+                        <span class="text-[11px] uppercase tracking-[0.2em] text-coffee-300">Specialty & Bakery</span>
+                    </div>
+                </a>
+
+                <!-- Десктопное меню навигации -->
+                <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium text-coffee-200">
+                    <a href="#advantages" class="hover:text-white transition-colors py-2">Преимущества</a>
+                    <a href="#stages" class="hover:text-white transition-colors py-2">Этапы</a>
+                    <a href="#custom-zero-block" class="hover:text-terracotta text-coffee-100 transition-colors py-2 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-terracotta animate-pulse"></span>Конструктор вкуса
+                    </a>
+                    <a href="#gallery" class="hover:text-white transition-colors py-2">Галерея</a>
+                    <a href="#team" class="hover:text-white transition-colors py-2">Команда</a>
+                    <a href="#contacts" class="hover:text-white transition-colors py-2">Контакты</a>
+                </nav>
+
+                <!-- Кнопка действия и бургер -->
+                <div class="flex items-center gap-3">
+                    <a href="#order" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-terracotta hover:bg-orange-600 text-white text-sm font-semibold shadow-md transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-mug-hot"></i>
+                        <span>Предзаказ</span>
+                    </a>
+                    <!-- Кнопка мобильного меню -->
+                    <button id="mobile-menu-btn" aria-label="Открыть меню" class="lg:hidden p-3 rounded-xl bg-coffee-800 text-coffee-100 hover:bg-coffee-700 transition-colors">
+                        <i class="fa-solid fa-bars text-xl" id="burger-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Мобильное выпадающее меню -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-coffee-900 border-t border-coffee-800 px-4 pt-3 pb-6 space-y-2 shadow-2xl">
+            <a href="#advantages" class="mobile-link block px-4 py-3 rounded-xl text-coffee-100 hover:bg-coffee-800 font-medium">Преимущества</a>
+            <a href="#stages" class="mobile-link block px-4 py-3 rounded-xl text-coffee-100 hover:bg-coffee-800 font-medium">Этапы обжарки</a>
+            <a href="#custom-zero-block" class="mobile-link block px-4 py-3 rounded-xl text-terracotta bg-coffee-800/50 font-semibold">Конструктор напитка (Zero-блок)</a>
+            <a href="#gallery" class="mobile-link block px-4 py-3 rounded-xl text-coffee-100 hover:bg-coffee-800 font-medium">Галерея</a>
+            <a href="#team" class="mobile-link block px-4 py-3 rounded-xl text-coffee-100 hover:bg-coffee-800 font-medium">Наша команда</a>
+            <a href="#contacts" class="mobile-link block px-4 py-3 rounded-xl text-coffee-100 hover:bg-coffee-800 font-medium">Контакты и карта</a>
+            <div class="pt-2">
+                <a href="#order" class="mobile-link block w-full text-center px-5 py-3.5 rounded-xl bg-terracotta text-white font-semibold">Оформить предзаказ</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== HERO-БЛОК ==================== -->
+    <section id="hero" class="relative pt-28 pb-20 lg:pt-36 lg:pb-28 bg-coffee-900 text-coffee-50 overflow-hidden">
+        <!-- Фоновое изображение с затемнением -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1920&q=80"
+                 onerror="this.src='https://placehold.co/1920x1080/211812/E2D5C0?text=Specialty+Coffee'"
+                 alt="Атмосфера кофейни Зерно и Огонь"
+                 class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-0 bg-gradient-to-r from-coffee-900 via-coffee-900/90 to-coffee-900/60"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-coffee-800/90 border border-coffee-700 text-coffee-200 text-xs sm:text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-terracotta"></span>
+                        Свежая обжарка каждый вторник и пятницу в Майкопе
+                    </div>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">
+                        Искусство живого зерна и <span class="text-coffee-300 italic">ремесленного</span> хлеба
+                    </h1>
+                    <p class="text-base sm:text-lg text-coffee-200 max-w-2xl leading-relaxed">
+                        Обжариваем редкие микролоты арабики класса Specialty на ростере Loring и выпекаем хрустящие круассаны на 72-часовой закваске. Забегайте на утренний фильтр или соберите свой авторский напиток онлайн.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a href="#order" class="inline-flex justify-center items-center gap-2 px-7 py-4 rounded-2xl bg-terracotta hover:bg-orange-600 text-white font-semibold shadow-xl transition-all transform hover:-translate-y-0.5">
+                            <span>Заказать кофе к приходу</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#custom-zero-block" class="inline-flex justify-center items-center gap-2 px-7 py-4 rounded-2xl bg-coffee-800/80 hover:bg-coffee-700 text-coffee-100 border border-coffee-600 font-semibold transition-all">
+                            <i class="fa-solid fa-sliders"></i>
+                            <span>Собрать свой вкус</span>
+                        </a>
+                    </div>
+                    <!-- Мини-метрики -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-coffee-800/80 max-w-lg">
+                        <div>
+                            <div class="font-serif text-2xl sm:text-3xl font-bold text-coffee-300">87+</div>
+                            <div class="text-xs text-coffee-300/80">Баллов Q-грейдинга</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-2xl sm:text-3xl font-bold text-coffee-300">72 ч.</div>
+                            <div class="text-xs text-coffee-300/80">Ферментация теста</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-2xl sm:text-3xl font-bold text-coffee-300">14 мин</div>
+                            <div class="text-xs text-coffee-300/80">Средний предзаказ</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка-акцент справа -->
+                <div class="lg:col-span-5">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-coffee-700/60 bg-coffee-800">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80"
+                             onerror="this.src='https://placehold.co/800x900/3E2D20/FAF7F2?text=Latte+Art'"
+                             alt="Латте-арт в чашке"
+                             class="w-full h-80 sm:h-96 object-cover">
+                        <div class="p-6 bg-gradient-to-t from-coffee-900 via-coffee-900/95 to-coffee-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs uppercase tracking-wider text-terracotta font-bold">Лот недели</span>
+                                <span class="text-xs px-2.5 py-1 rounded-lg bg-coffee-800 text-coffee-200">Мытая обработка</span>
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold text-white">Эфиопия Иргачефф Ворка</h3>
+                            <p class="text-sm text-coffee-300 mt-1">Ноты бергамота, белого персика и цветов жасмина. Идеально для воронки V60 и флэт уайта.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ДЕКОРАТИВНЫЙ РАЗДЕЛИТЕЛЬ №1 ==================== -->
+    <div class="bg-coffee-900 text-coffee-50 -mt-1">
+        <svg class="w-full h-10 sm:h-16 block" viewBox="0 0 1440 74" fill="none" preserveAspectRatio="none">
+            <path d="M0 24C240 74 480 74 720 37C960 0 1200 0 1440 37V74H0V24Z" fill="#FAF7F2"/>
+        </svg>
+    </div>
+
+    <!-- ==================== БЛОК: ПРЕИМУЩЕСТВА ==================== -->
+    <section id="advantages" class="py-16 sm:py-24 bg-coffee-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-terracotta font-semibold text-xs uppercase tracking-[0.2em]">Почему выбирают нас</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-coffee-900 mt-2">Философия честного вкуса</h2>
+                <p class="text-coffee-700 mt-4 text-base">Мы контролируем каждый миллиметр пути: от прямых контрактов с фермерами в Эфиопии и Колумбии до температуры воды в бойлере.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Карточка 1 -->
+                <div class="bg-white rounded-3xl p-7 shadow-sm border border-coffee-200/70 hover:shadow-xl hover:-translate-y-1 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-coffee-100 text-terracotta flex items-center justify-center text-2xl mb-5">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-coffee-900 mb-2">Собственный ростер</h3>
+                    <p class="text-sm text-coffee-700 leading-relaxed">Жарим зерно малыми батчами дважды в неделю. На каждой пачке указана точная дата и профиль обжарки.</p>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="bg-white rounded-3xl p-7 shadow-sm border border-coffee-200/70 hover:shadow-xl hover:-translate-y-1 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-coffee-100 text-terracotta flex items-center justify-center text-2xl mb-5">
+                        <i class="fa-solid fa-wheat-awn"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-coffee-900 mb-2">Ремесленная пекарня</h3>
+                    <p class="text-sm text-coffee-700 leading-relaxed">Слоеные круассаны на фермерском сливочном масле 82,5% и тартины на живой ржано-пшеничной закваске.</p>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="bg-white rounded-3xl p-7 shadow-sm border border-coffee-200/70 hover:shadow-xl hover:-translate-y-1 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-coffee-100 text-terracotta flex items-center justify-center text-2xl mb-5">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-coffee-900 mb-2">Идеальная вода</h3>
+                    <p class="text-sm text-coffee-700 leading-relaxed">Трехступенчатый обратный осмос и реминерализация под светлую обжарку для раскрытия ягодной кислотности.</p>
+                </div>
+
+                <!-- Карточка 4 -->
+                <div class="bg-white rounded-3xl p-7 shadow-sm border border-coffee-200/70 hover:shadow-xl hover:-translate-y-1 transition-all">
+                    <div class="w-14 h-14 rounded-2xl bg-coffee-100 text-terracotta flex items-center justify-center text-2xl mb-5">
+                        <i class="fa-solid fa-couch"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-coffee-900 mb-2">Пространство для работы</h3>
+                    <p class="text-sm text-coffee-700 leading-relaxed">Тихая зона с розетками у каждого стола, быстрый Wi-Fi, живые растения и виниловый проигрыватель.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ДЕКОРАТИВНЫЙ РАЗДЕЛИТЕЛЬ №2 ==================== -->
+    <div class="max-w-5xl mx-auto px-4 py-4">
+        <div class="flex items-center justify-center gap-4">
+            <div class="h-px bg-coffee-300 flex-1"></div>
+            <div class="flex items-center gap-2 text-coffee-500">
+                <i class="fa-solid fa-seedling text-sm"></i>
+                <span class="font-serif italic text-lg text-coffee-700">От ростка до вашей чашки</span>
+                <i class="fa-solid fa-mug-saucer text-sm"></i>
+            </div>
+            <div class="h-px bg-coffee-300 flex-1"></div>
+        </div>
+    </div>
+
+    <!-- ==================== БЛОК: ЭТАПЫ РАБОТЫ / ПРИГОТОВЛЕНИЯ ==================== -->
+    <section id="stages" class="py-16 sm:py-24 bg-coffee-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-terracotta font-semibold text-xs uppercase tracking-[0.2em]">Технология процесса</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-coffee-900 mt-2">4 этапа создания идеальной чашки</h2>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <!-- Соединительная линия на десктопе -->
+                <div class="hidden md:block absolute top-10 left-[12%] right-[12%] h-0.5 bg-coffee-300 z-0"></div>
+
+                <!-- Этап 1 -->
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-20 h-20 rounded-2xl bg-coffee-900 text-coffee-50 flex flex-col items-center justify-center shadow-lg border-4 border-coffee-50 mb-5">
+                        <span class="text-xs text-coffee-300 uppercase">Этап</span>
+                        <span class="font-serif text-2xl font-bold">01</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-coffee-900 mb-2">Каппинг и отбор</h3>
+                    <p class="text-sm text-coffee-700">Пробуем десятки образцов нового урожая и выбираем зерно с чистым, ярким букетом без дефектов.</p>
+                </div>
+
+                <!-- Этап 2 -->
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-20 h-20 rounded-2xl bg-coffee-800 text-coffee-50 flex flex-col items-center justify-center shadow-lg border-4 border-coffee-50 mb-5">
+                        <span class="text-xs text-coffee-300 uppercase">Этап</span>
+                        <span class="font-serif text-2xl font-bold">02</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-coffee-900 mb-2">Бережная обжарка</h3>
+                    <p class="text-sm text-coffee-700">Подбираем кривую роста температуры под плотность зерна, сохраняя природную сладость и аромат.</p>
+                </div>
+
+                <!-- Этап 3 -->
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-20 h-20 rounded-2xl bg-coffee-700 text-coffee-50 flex flex-col items-center justify-center shadow-lg border-4 border-coffee-50 mb-5">
+                        <span class="text-xs text-coffee-300 uppercase">Этап</span>
+                        <span class="font-serif text-2xl font-bold">03</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-coffee-900 mb-2">Дегазация 5 дней</h3>
+                    <p class="text-sm text-coffee-700">Даем зерну отдохнуть в клапанных пакетах, чтобы вкус стабилизировался перед попаданием в кофемолку.</p>
+                </div>
+
+                <!-- Этап 4 -->
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-20 h-20 rounded-2xl bg-terracotta text-white flex flex-col items-center justify-center shadow-lg border-4 border-coffee-50 mb-5">
+                        <span class="text-xs text-orange-100 uppercase">Этап</span>
+                        <span class="font-serif text-2xl font-bold">04</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-coffee-900 mb-2">Точная экстракция</h3>
+                    <p class="text-sm text-coffee-700">Взвешиваем каждую дозу с точностью до 0,1 г и настраиваем помол каждое утро под влажность воздуха.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== КАСТОМНЫЙ HTML / ZERO-БЛОК (КОНСТРУКТОР НАПИТКА) ==================== -->
+    <section id="custom-zero-block" class="py-20 bg-coffee-900 text-coffee-50 relative overflow-hidden">
+        <!-- Декоративные фоновые пятна -->
+        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-terracotta/15 blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-coffee-500/15 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <span class="inline-block px-3 py-1 rounded-lg bg-terracotta/20 text-terracotta border border-terracotta/40 text-xs font-semibold uppercase tracking-wider mb-3">
+                        Интерактивный Zero-блок • Бариста-лаборатория
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Конструктор авторского напитка</h2>
+                </div>
+                <p class="text-coffee-300 text-sm max-w-md">
+                    Настройте зерно, молоко, крепость и сироп — живая модель чашки рассчитает состав, калорийность и позволит передать рецепт бариста в 1 клик.
+                </p>
+            </div>
+
+            <!-- Интерактивная панель конструктора -->
+            <div class="bg-coffee-800/80 backdrop-blur-md border border-coffee-700 rounded-3xl p-6 sm:p-10 shadow-2xl">
+                <div class="grid lg:grid-cols-12 gap-10 items-center">
+                    
+                    <!-- Левая колонка: Элементы управления -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <!-- Выбор сорта зерна -->
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-coffee-300 font-semibold mb-3">1. Выберите сорт зерна</label>
+                            <div class="grid sm:grid-cols-3 gap-3" id="bean-selector">
+                                <button type="button" data-bean="Эфиопия Иргачефф" data-note="Ягоды и жасмин" data-price="0" class="bean-btn active-bean text-left p-3.5 rounded-2xl border-2 border-terracotta bg-coffee-900/90 transition-all">
+                                    <div class="font-semibold text-sm text-white">Эфиопия</div>
+                                    <div class="text-xs text-coffee-300 mt-0.5">Ягоды, жасмин</div>
+                                </button>
+                                <button type="button" data-bean="Колумбия Уила" data-note="Карамель и красное яблоко" data-price="30" class="bean-btn text-left p-3.5 rounded-2xl border border-coffee-600 bg-coffee-900/40 hover:border-coffee-400 transition-all">
+                                    <div class="font-semibold text-sm text-white">Колумбия (+30₽)</div>
+                                    <div class="text-xs text-coffee-300 mt-0.5">Карамель, яблоко</div>
+                                </button>
+                                <button type="button" data-bean="Бразилия Серрадо" data-note="Шоколад и лесной орех" data-price="0" class="bean-btn text-left p-3.5 rounded-2xl border border-coffee-600 bg-coffee-900/40 hover:border-coffee-400 transition-all">
+                                    <div class="font-semibold text-sm text-white">Бразилия</div>
+                                    <div class="text-xs text-coffee-300 mt-0.5">Шоколад, орех</div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Выбор основы / молока -->
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-coffee-300 font-semibold mb-3">2. Основа напитка</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="milk-selector">
+                                <button type="button" data-milk="Классическое молоко" data-color="#E8D5B7" data-price="0" class="milk-btn active-milk p-3 rounded-xl border-2 border-terracotta bg-coffee-900/90 text-xs font-medium text-white text-center transition-all">
+                                    Коровье 3.2%
+                                </button>
+                                <button type="button" data-milk="Овсяное молоко" data-color="#DFC9A6" data-price="60" class="milk-btn p-3 rounded-xl border border-coffee-600 bg-coffee-900/40 text-xs font-medium text-coffee-200 hover:border-coffee-400 text-center transition-all">
+                                    Овсяное (+60₽)
+                                </button>
+                                <button type="button" data-milk="Миндальное молоко" data-color="#F2E4CE" data-price="70" class="milk-btn p-3 rounded-xl border border-coffee-600 bg-coffee-900/40 text-xs font-medium text-coffee-200 hover:border-coffee-400 text-center transition-all">
+                                    Миндальное (+70₽)
+                                </button>
+                                <button type="button" data-milk="Без молока (Чёрный)" data-color="#3B2314" data-price="-40" class="milk-btn p-3 rounded-xl border border-coffee-600 bg-coffee-900/40 text-xs font-medium text-coffee-200 hover:border-coffee-400 text-center transition-all">
+                                    Без молока (-40₽)
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Ползунки крепости и сладости -->
+                        <div class="grid sm:grid-cols-2 gap-6 pt-2">
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-2">
+                                    <span class="text-coffee-300 uppercase tracking-wider">Крепость (Шоты эспрессо)</span>
+                                    <span id="strength-label" class="text-terracotta">2 шота (36 г)</span>
+                                </div>
+                                <input type="range" id="strength-range" min="1" max="3" value="2" class="w-full accent-terracotta cursor-pointer h-2 bg-coffee-900 rounded-lg">
+                                <div class="flex justify-between text-[11px] text-coffee-400 mt-1">
+                                    <span>Мягкий</span>
+                                    <span>Баланс</span>
+                                    <span>Двойной заряд</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold mb-2">
+                                    <span class="text-coffee-300 uppercase tracking-wider">Авторский сироп</span>
+                                    <span id="syrup-label" class="text-terracotta">Без сахара</span>
+                                </div>
+                                <select id="syrup-select" class="w-full px-3.5 py-2.5 rounded-xl bg-coffee-900 border border-coffee-600 text-sm text-white focus:outline-none focus:border-terracotta">
+                                    <option value="Без сиропа" data-price="0">Без сиропа (Чистый вкус)</option>
+                                    <option value="Соленая карамель" data-price="40">Домашняя соленая карамель (+40₽)</option>
+                                    <option value="Лаванда-мед" data-price="50">Горная лаванда и мед (+50₽)</option>
+                                    <option value="Бурбонская ваниль" data-price="40">Бурбонская ваниль (+40₽)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Правая колонка: Живая SVG-визуализация стакана и итог -->
+                    <div class="lg:col-span-5 bg-coffee-900/90 rounded-3xl p-6 sm:p-8 border border-coffee-700/80 flex flex-col items-center text-center">
+                        <!-- Динамический SVG-стакан с анимацией слоев -->
+                        <div class="relative w-44 h-48 mb-4 flex items-center justify-center">
+                            <svg viewBox="0 0 160 180" class="w-full h-full drop-shadow-2xl">
+                                <!-- Пар над стаканом -->
+                                <path d="M55 22 Q 50 12, 58 4" stroke="#CCB696" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6">
+                                    <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.5s" repeatCount="indefinite" />
+                                </path>
+                                <path d="M80 18 Q 75 8, 83 0" stroke="#CCB696" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.8s" repeatCount="indefinite" />
+                                </path>
+                                <path d="M105 22 Q 100 12, 108 4" stroke="#CCB696" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6">
+                                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.2s" repeatCount="indefinite" />
+                                </path>
+                                <!-- Маска стакана -->
+                                <defs>
+                                    <clipPath id="cupClip">
+                                        <polygon points="34,46 126,46 114,164 46,164" />
+                                    </clipPath>
+                                </defs>
+                                <!-- Содержимое стакана (слои) -->
+                                <g clip-path="url(#cupClip)">
+                                    <!-- Слой молока/основы -->
+                                    <rect id="cup-milk-layer" x="25" y="54" width="110" height="115" fill="#E8D5B7" class="transition-all duration-500" />
+                                    <!-- Слой эспрессо -->
+                                    <rect id="cup-coffee-layer" x="25" y="114" width="110" height="55" fill="#4A2C18" class="transition-all duration-500" />
+                                    <!-- Пенка крема -->
+                                    <rect x="25" y="48" width="110" height="9" fill="#C68B59" opacity="0.85" />
+                                </g>
+                                <!-- Контур стакана -->
+                                <polygon points="34,46 126,46 114,164 46,164" fill="none" stroke="#FAF7F2" stroke-width="3" stroke-linejoin="round" />
+                                <!-- Крышка -->
+                                <rect x="28" y="34" width="104" height="12" rx="4" fill="#C85A32" />
+                                <rect x="36" y="27" width="88" height="7" rx="3" fill="#E06D44" />
+                            </svg>
+                        </div>
+
+                        <div class="text-xs uppercase tracking-widest text-coffee-400 font-semibold">Ваш авторский рецепт</div>
+                        <h3 id="recipe-title" class="font-serif text-2xl font-bold text-white mt-1">Флэт Уайт на Эфиопии</h3>
+                        <p id="recipe-desc" class="text-xs text-coffee-300 mt-1.5 min-h-[32px]">
+                            2 шота эспрессо • Классическое молоко • Без сиропа
+                        </p>
+
+                        <div class="w-full flex items-center justify-between pt-5 mt-5 border-t border-coffee-800">
+                            <div class="text-left">
+                                <span class="text-xs text-coffee-400 block">Стоимость (300 мл)</span>
+                                <span id="recipe-price" class="font-serif text-3xl font-bold text-coffee-200">290 ₽</span>
+                            </div>
+                            <button type="button" id="apply-recipe-btn" class="px-5 py-3 rounded-xl bg-terracotta hover:bg-orange-600 text-white text-sm font-semibold shadow-lg transition-all">
+                                В форму заказа <i class="fa-solid fa-arrow-down ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== БЛОК: ГАЛЕРЕЯ С ФИЛЬТРАЦИЕЙ И ЛАЙТБОКСОМ ==================== -->
+    <section id="gallery" class="py-16 sm:py-24 bg-coffee-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-terracotta font-semibold text-xs uppercase tracking-[0.2em]">Атмосфера и подача</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-coffee-900 mt-2">Галерея кофейни</h2>
+                </div>
+
+                <!-- Кнопки фильтрации галереи -->
+                <div class="flex flex-wrap gap-2" id="gallery-filters">
+                    <button type="button" data-filter="all" class="filter-btn active px-4 py-2 rounded-xl bg-coffee-900 text-white text-sm font-medium transition-all">Все фото</button>
+                    <button type="button" data-filter="coffee" class="filter-btn px-4 py-2 rounded-xl bg-coffee-200/70 text-coffee-800 hover:bg-coffee-200 text-sm font-medium transition-all">Кофе</button>
+                    <button type="button" data-filter="bakery" class="filter-btn px-4 py-2 rounded-xl bg-coffee-200/70 text-coffee-800 hover:bg-coffee-200 text-sm font-medium transition-all">Выпечка</button>
+                    <button type="button" data-filter="interior" class="filter-btn px-4 py-2 rounded-xl bg-coffee-200/70 text-coffee-800 hover:bg-coffee-200 text-sm font-medium transition-all">Интерьер</button>
+                </div>
+            </div>
+
+            <!-- Сетка фотографий -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                <!-- Фото 1 -->
+                <div class="gallery-item group relative rounded-3xl overflow-hidden shadow-md cursor-pointer aspect-[4/3] bg-coffee-200" data-category="coffee" data-title="Альтернативное заваривание V60">
+                    <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80"
+                         onerror="this.src='https://placehold.co/800x600/64482E/FAF7F2?text=Pour+Over+V60'"
+                         alt="Воронка V60" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-coffee-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div class="text-white">
+                            <span class="text-xs uppercase tracking-wider text-coffee-300">Кофе</span>
+                            <h4 class="font-serif text-xl font-bold">Альтернативное заваривание V60</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Фото 2 -->
+                <div class="gallery-item group relative rounded-3xl overflow-hidden shadow-md cursor-pointer aspect-[4/3] bg-coffee-200" data-category="bakery" data-title="Миндальный круассан на закваске">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80"
+                         onerror="this.src='https://placehold.co/800x600/805E3B/FAF7F2?text=Croissants'"
+                         alt="Свежие круассаны" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-coffee-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div class="text-white">
+                            <span class="text-xs uppercase tracking-wider text-coffee-300">Выпечка</span>
+                            <h4 class="font-serif text-xl font-bold">Миндальный круассан на закваске</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Фото 3 -->
+                <div class="gallery-item group relative rounded-3xl overflow-hidden shadow-md cursor-pointer aspect-[4/3] bg-coffee-200" data-category="interior" data-title="Основной зал и контактная барная стойка">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80"
+                         onerror="this.src='https://placehold.co/800x600/3E2D20/FAF7F2?text=Coffee+Shop+Interior'"
+                         alt="Интерьер кофейни" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-coffee-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div class="text-white">
+                            <span class="text-xs uppercase tracking-wider text-coffee-300">Интерьер</span>
+                            <h4 class="font-serif text-xl font-bold">Основной зал и контактная стойка</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Фото 4 -->
+                <div class="gallery-item group relative rounded-3xl overflow-hidden shadow-md cursor-pointer aspect-[4/3] bg-coffee-200" data-category="coffee" data-title="Эспрессо-тоник с розмарином и грейпфрутом">
+                    <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80"
+                         onerror="this.src='https://placehold.co/800x600/64482E/FAF7F2?text=Espresso+Tonic'"
+                         alt="Холодный кофе" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-coffee-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div class="text-white">
+                            <span class="text-xs uppercase tracking-wider text-coffee-300">Кофе</span>
+                            <h4 class="font-serif text-xl font-bold">Эспрессо-тоник с грейпфрутом</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Фото 5 -->
+                <div class="gallery-item group relative rounded-3xl overflow-hidden shadow-md cursor-pointer aspect-[4/3] bg-coffee-200" data-category="bakery" data-title="Ремесленный тартин с хрустящей корочкой">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80"
+                         onerror="this.src='https://placehold.co/800x600/805E3B/FAF7F2?text=Artisan+Bread'"
+                         alt="Ремесленный хлеб" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-coffee-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div class="text-white">
+                            <span class="text-xs uppercase tracking-wider text-coffee-300">Выпечка</span>
+                            <h4 class="font-serif text-xl font-bold">Ремесленный тартин на закваске</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Фото 6 -->
+                <div class="gallery-item group relative rounded-3xl overflow-hidden shadow-md cursor-pointer aspect-[4/3] bg-coffee-200" data-category="interior" data-title="Обжарочный цех и зона дегустаций">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80"
+                         onerror="this.src='https://placehold.co/800x600/3E2D20/FAF7F2?text=Roastery+Space'"
+                         alt="Зона обжарки" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-coffee-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div class="text-white">
+                            <span class="text-xs uppercase tracking-wider text-coffee-300">Интерьер</span>
+                            <h4 class="font-serif text-xl font-bold">Утренний свет и свежий помол</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== БЛОК: КОМАНДА ==================== -->
+    <section id="team" class="py-16 sm:py-24 bg-coffee-100/70 border-y border-coffee-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-terracotta font-semibold text-xs uppercase tracking-[0.2em]">Люди за стойкой</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-coffee-900 mt-2">Команда «Зерно & Огонь»</h2>
+                <p class="text-coffee-700 mt-3 text-base">Сертифицированные Q-грейдеры, призеры чемпионатов бариста и влюбленные в свое дело пекари.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Участник 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-coffee-200/70 group">
+                    <div class="aspect-[4/3] overflow-hidden bg-coffee-200">
+                        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=700&q=80"
+                             onerror="this.src='https://placehold.co/700x525/3E2D20/FAF7F2?text=Head+Roaster'"
+                             alt="Артем Соколов" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold uppercase tracking-wider text-terracotta">Шеф-обжарщик • Q-Grader</span>
+                        <h3 class="font-serif text-2xl font-bold text-coffee-900 mt-1">Артём Соколов</h3>
+                        <p class="text-sm text-coffee-700 mt-2 leading-relaxed">8 лет в спешелти-индустрии. Лично отбирает лоты и настраивает профили обжарки так, чтобы даже дома в турке кофе звучал ярко.</p>
+                    </div>
+                </div>
+
+                <!-- Участник 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-coffee-200/70 group">
+                    <div class="aspect-[4/3] overflow-hidden bg-coffee-200">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80"
+                             onerror="this.src='https://placehold.co/700x525/64482E/FAF7F2?text=Head+Barista'"
+                             alt="Валерия Морозова" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold uppercase tracking-wider text-terracotta">Шеф-бариста</span>
+                        <h3 class="font-serif text-2xl font-bold text-coffee-900 mt-1">Валерия Морозова</h3>
+                        <p class="text-sm text-coffee-700 mt-2 leading-relaxed">Финалист Russian Barista Cup. Создает сезонные авторские напитки на основе натуральных настоев трав, специй и ягод.</p>
+                    </div>
+                </div>
+
+                <!-- Участник 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-coffee-200/70 group">
+                    <div class="aspect-[4/3] overflow-hidden bg-coffee-200">
+                        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=700&q=80"
+                             onerror="this.src='https://placehold.co/700x525/805E3B/FAF7F2?text=Head+Baker'"
+                             alt="Дмитрий Белов" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold uppercase tracking-wider text-terracotta">Шеф-пекарь</span>
+                        <h3 class="font-serif text-2xl font-bold text-coffee-900 mt-1">Дмитрий Белов</h3>
+                        <p class="text-sm text-coffee-700 mt-2 leading-relaxed">Стажировался в пекарнях Лиона. Вывел собственную закваску «Огонь», которой уже 6 лет — на ней печется весь наш хлеб.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== БЛОК: ФОРМА ЗАКАЗА / РЕГИСТРАЦИИ НА КАППИНГ ==================== -->
+    <section id="order" class="py-16 sm:py-24 bg-coffee-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl border border-coffee-200 overflow-hidden">
+                <div class="grid lg:grid-cols-12">
+                    <!-- Левая информационная панель -->
+                    <div class="lg:col-span-5 bg-coffee-900 text-coffee-50 p-8 sm:p-10 flex flex-col justify-between">
+                        <div>
+                            <span class="text-terracotta text-xs font-bold uppercase tracking-widest">Без очереди</span>
+                            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-2">Предзаказ или запись на каппинг</h2>
+                            <p class="text-sm text-coffee-300 mt-4 leading-relaxed">
+                                Оформите предзаказ кофе с выпечкой к определенному времени или забронируйте место на субботнюю открытую дегустацию новых лотов.
+                            </p>
+
+                            <ul class="space-y-3 mt-8 text-sm text-coffee-200">
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-circle-check text-terracotta"></i>
+                                    <span>Скидка 10% в свою многоразовую кружку</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-circle-check text-terracotta"></i>
+                                    <span>Помол зерна под вашу кофеварку бесплатно</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-circle-check text-terracotta"></i>
+                                    <span>Участие в субботнем каппинге — 0 ₽</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Соцсети для быстрой связи -->
+                        <div class="pt-8 mt-8 border-t border-coffee-800">
+                            <span class="text-xs uppercase tracking-wider text-coffee-400 block mb-3">Быстрая связь в мессенджерах:</span>
+                            <div class="flex items-center gap-3">
+                                <a href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="w-11 h-11 rounded-xl bg-coffee-800 hover:bg-terracotta text-white flex items-center justify-center transition-colors">
+                                    <i class="fa-brands fa-telegram text-lg"></i>
+                                </a>
+                                <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте" class="w-11 h-11 rounded-xl bg-coffee-800 hover:bg-terracotta text-white flex items-center justify-center transition-colors">
+                                    <i class="fa-brands fa-vk text-lg"></i>
+                                </a>
+                                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-11 h-11 rounded-xl bg-coffee-800 hover:bg-terracotta text-white flex items-center justify-center transition-colors">
+                                    <i class="fa-brands fa-youtube text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Правая панель: Сама форма -->
+                    <div class="lg:col-span-7 p-8 sm:p-10">
+                        <form id="order-form" class="space-y-5">
+                            <!-- Переключатель типа заявки -->
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-coffee-700 mb-2">Цель обращения</label>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="orderType" value="Предзаказ кофе и выпечки" checked class="peer sr-only">
+                                        <div class="p-3 rounded-xl border border-coffee-300 peer-checked:border-terracotta peer-checked:bg-coffee-50 text-center text-sm font-semibold text-coffee-900 transition-all">
+                                            Предзаказ напитка
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="orderType" value="Регистрация на субботний каппинг" class="peer sr-only">
+                                        <div class="p-3 rounded-xl border border-coffee-300 peer-checked:border-terracotta peer-checked:bg-coffee-50 text-center text-sm font-semibold text-coffee-900 transition-all">
+                                            Запись на каппинг
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="client-name" class="block text-xs font-semibold text-coffee-800 mb-1.5">Ваше имя *</label>
+                                    <input type="text" id="client-name" required placeholder="Например, Анна" class="w-full px-4 py-3 rounded-xl border border-coffee-300 focus:outline-none focus:border-terracotta text-sm">
+                                </div>
+                                <div>
+                                    <label for="client-phone" class="block text-xs font-semibold text-coffee-800 mb-1.5">Телефон или @Telegram *</label>
+                                    <input type="text" id="client-phone" required placeholder="+7 (999) 123-45-67" class="w-full px-4 py-3 rounded-xl border border-coffee-300 focus:outline-none focus:border-terracotta text-sm">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="order-details" class="block text-xs font-semibold text-coffee-800 mb-1.5">Состав заказа или комментарий</label>
+                                <textarea id="order-details" rows="3" placeholder="Укажите напиток, выпечку или количество гостей на дегустацию..." class="w-full px-4 py-3 rounded-xl border border-coffee-300 focus:outline-none focus:border-terracotta text-sm">Флэт Уайт на Эфиопии (300 мл) + Миндальный круассан</textarea>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4 items-center">
+                                <div>
+                                    <label for="pickup-time" class="block text-xs font-semibold text-coffee-800 mb-1.5">Удобное время визита</label>
+                                    <input type="time" id="pickup-time" value="10:30" class="w-full px-4 py-3 rounded-xl border border-coffee-300 focus:outline-none focus:border-terracotta text-sm">
+                                </div>
+                                <div class="flex items-center gap-2.5 pt-4 sm:pt-6">
+                                    <input type="checkbox" id="own-cup" class="w-4 h-4 accent-terracotta rounded">
+                                    <label for="own-cup" class="text-xs text-coffee-700 cursor-pointer">Приду со своим термостаканом (-10%)</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-2xl bg-terracotta hover:bg-orange-600 text-white font-semibold text-base shadow-lg transition-all transform hover:-translate-y-0.5">
+                                Отправить заявку бариста
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== БЛОК: КОНТАКТЫ И ФРАГМЕНТ КАРТЫ С АДРЕСОМ ==================== -->
+    <section id="contacts" class="py-16 sm:py-24 bg-coffee-100/80 border-t border-coffee-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-10 items-stretch">
+                
+                <!-- Текстовые контакты -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+                    <div>
+                        <span class="text-terracotta font-semibold text-xs uppercase tracking-[0.2em]">Ждём в гости</span>
+                        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-coffee-900 mt-2">Контакты и адрес</h2>
+                        <p class="text-coffee-700 mt-3 text-sm leading-relaxed">
+                            Мы находимся в 3 минутах пешком от Городского парка культуры и отдыха — в самом центре Майкопа с уютной летней верандой.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white p-5 rounded-2xl border border-coffee-200/80 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-coffee-100 text-terracotta flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-coffee-900 text-sm">Адрес кофейни</h4>
+                                <p class="text-sm text-coffee-700 mt-0.5">Республика Адыгея, г. Майкоп, ул. Краснооктябрьская, д. 28</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-coffee-200/80 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-coffee-100 text-terracotta flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-coffee-900 text-sm">Режим работы</h4>
+                                <p class="text-sm text-coffee-700 mt-0.5">Пн–Пт: 08:00 – 22:00 • Сб–Вс: 09:00 – 23:00</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-coffee-200/80 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-coffee-100 text-terracotta flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-coffee-900 text-sm">Телефон и почта</h4>
+                                <p class="text-sm text-coffee-700 mt-0.5">
+                                    <a href="tel:+78772524819" class="hover:text-terracotta font-medium">+7 (8772) 52-48-19</a> • hello@zerno-ogon.ru
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Активные кнопки соцсетей -->
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-wider text-coffee-700 block mb-3">Мы в социальных сетях:</span>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-coffee-900 hover:bg-terracotta text-white text-sm font-medium transition-colors">
+                                <i class="fa-brands fa-telegram"></i>
+                                <span>Telegram</span>
+                            </a>
+                            <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-coffee-900 hover:bg-terracotta text-white text-sm font-medium transition-colors">
+                                <i class="fa-brands fa-vk"></i>
+                                <span>ВКонтакте</span>
+                            </a>
+                            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-coffee-900 hover:bg-terracotta text-white text-sm font-medium transition-colors">
+                                <i class="fa-brands fa-youtube"></i>
+                                <span>YouTube</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Интерактивный фрагмент карты с меткой адреса -->
+                <div class="lg:col-span-7">
+                    <div class="w-full h-full min-h-[380px] rounded-3xl overflow-hidden shadow-lg border border-coffee-300 relative bg-coffee-200">
+                        <iframe 
+                            title="Карта проезда в кофейню Зерно и Огонь в Майкопе"
+                            src="https://yandex.ru/map-widget/v1/?ll=40.1045%2C44.6062&z=16&pt=40.1045%2C44.6062%2Cpm2rdm"
+                            class="w-full h-full min-h-[380px] border-0"
+                            allowfullscreen="true"
+                            loading="lazy">
+                        </iframe>
+                        <!-- Плашка поверх угла карты -->
+                        <div class="absolute bottom-4 left-4 right-4 sm:right-auto bg-coffee-900/95 backdrop-blur-md text-white px-4 py-3 rounded-2xl shadow-xl border border-coffee-700 flex items-center gap-3">
+                            <span class="w-3 h-3 rounded-full bg-terracotta animate-ping shrink-0"></span>
+                            <div class="text-xs">
+                                <strong class="block text-sm">Зерно & Огонь</strong>
+                                <span class="text-coffee-300">г. Майкоп, ул. Краснооктябрьская, 28 (возле Городского парка)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 2. ПОДВАЛ (FOOTER) ==================== -->
+    <footer class="bg-coffee-900 text-coffee-200 pt-16 pb-10 border-t border-coffee-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-10 pb-12 border-b border-coffee-800">
+                <!-- Колонка 1: О бренде -->
+                <div class="md:col-span-2 space-y-4">
+                    <a href="#hero" class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-terracotta flex items-center justify-center text-white">
+                            <i class="fa-solid fa-mug-hot"></i>
+                        </div>
+                        <span class="font-serif text-2xl font-bold text-white">Зерно & Огонь</span>
+                    </a>
+                    <p class="text-sm text-coffee-300 max-w-md leading-relaxed">
+                        Спешелти-кофейня, собственный обжарочный цех и ремесленная пекарня в самом сердце Майкопа. Готовим с уважением к продукту и гостю.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="w-10 h-10 rounded-xl bg-coffee-800 hover:bg-terracotta text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                        <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте" class="w-10 h-10 rounded-xl bg-coffee-800 hover:bg-terracotta text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-vk"></i>
+                        </a>
+                        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-10 h-10 rounded-xl bg-coffee-800 hover:bg-terracotta text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Колонка 2: Навигация -->
+                <div>
+                    <h4 class="font-semibold text-white text-sm uppercase tracking-wider mb-4">Навигация</h4>
+                    <ul class="space-y-2.5 text-sm text-coffee-300">
+                        <li><a href="#advantages" class="hover:text-white transition-colors">Преимущества</a></li>
+                        <li><a href="#stages" class="hover:text-white transition-colors">Этапы обжарки</a></li>
+                        <li><a href="#custom-zero-block" class="hover:text-white transition-colors">Конструктор напитка</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition-colors">Галерея</a></li>
+                        <li><a href="#team" class="hover:text-white transition-colors">Команда</a></li>
+                    </ul>
+                </div>
+
+                <!-- Колонка 3: Контакты -->
+                <div>
+                    <h4 class="font-semibold text-white text-sm uppercase tracking-wider mb-4">Ждём вас</h4>
+                    <ul class="space-y-2.5 text-sm text-coffee-300">
+                        <li>г. Майкоп, ул. Краснооктябрьская, д. 28</li>
+                        <li>Ежедневно с 08:00 до 22:00</li>
+                        <li><a href="tel:+78772524819" class="hover:text-white transition-colors">+7 (8772) 52-48-19</a></li>
+                        <li><a href="#order" class="text-terracotta hover:underline font-medium">Оформить предзаказ →</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-coffee-400">
+                <p>© 2026 «Зерно & Огонь». Все права защищены.</p>
+                <p>Сделано с любовью к спешелти-кофе и ремесленному хлебу.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== МОДАЛЬНОЕ ОКНО: ЛАЙТБОКС ГАЛЕРЕИ ==================== -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="relative max-w-4xl w-full bg-coffee-900 rounded-3xl overflow-hidden border border-coffee-700 shadow-2xl">
+            <button id="close-lightbox" aria-label="Закрыть просмотр" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 hover:bg-terracotta text-white flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <img id="lightbox-img" src="" alt="Просмотр фото" class="w-full max-h-[75vh] object-contain bg-black">
+            <div class="p-5 flex items-center justify-between text-white">
+                <h4 id="lightbox-caption" class="font-serif text-xl font-bold"></h4>
+                <span class="text-xs text-coffee-300">Галерея «Зерно & Огонь»</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== МОДАЛЬНОЕ ОКНО: ПОДТВЕРЖДЕНИЕ ЗАКАЗА (ВМЕСТО ALERT) ==================== -->
+    <div id="order-modal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 text-center shadow-2xl border border-coffee-200 transform transition-all">
+            <div class="w-16 h-16 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center text-3xl mx-auto mb-5">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-serif text-3xl font-bold text-coffee-900">Заявка принята!</h3>
+            <p id="order-modal-text" class="text-sm text-coffee-700 mt-3 leading-relaxed"></p>
+            <button id="close-order-modal" class="mt-6 w-full py-3.5 rounded-xl bg-coffee-900 hover:bg-coffee-800 text-white font-semibold text-sm transition-colors">
+                Отлично, спасибо!
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== СКРИПТЫ ИНТЕРАКТИВНОСТИ ==================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Мобильное меню (бургер)
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const burgerIcon = document.getElementById('burger-icon');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                burgerIcon.className = isHidden ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    burgerIcon.className = 'fa-solid fa-bars text-xl';
+                });
+            });
+
+            // 2. Кастомный Zero-блок: Конструктор авторского напитка
+            let drinkState = {
+                bean: 'Эфиопия Иргачефф',
+                beanPrice: 0,
+                milk: 'Классическое молоко',
+                milkColor: '#E8D5B7',
+                milkPrice: 0,
+                strength: 2,
+                syrup: 'Без сиропа',
+                syrupPrice: 0
+            };
+
+            const beanBtns = document.querySelectorAll('.bean-btn');
+            const milkBtns = document.querySelectorAll('.milk-btn');
+            const strengthRange = document.getElementById('strength-range');
+            const syrupSelect = document.getElementById('syrup-select');
+
+            const strengthLabel = document.getElementById('strength-label');
+            const syrupLabel = document.getElementById('syrup-label');
+            const recipeTitle = document.getElementById('recipe-title');
+            const recipeDesc = document.getElementById('recipe-desc');
+            const recipePrice = document.getElementById('recipe-price');
+            const cupMilkLayer = document.getElementById('cup-milk-layer');
+            const cupCoffeeLayer = document.getElementById('cup-coffee-layer');
+            const applyRecipeBtn = document.getElementById('apply-recipe-btn');
+
+            function updateDrinkVisualizer() {
+                // Расчет цены
+                const basePrice = 290;
+                const extraShotPrice = drinkState.strength === 3 ? 50 : 0;
+                const total = basePrice + drinkState.beanPrice + drinkState.milkPrice + drinkState.syrupPrice + extraShotPrice;
+
+                // Обновление текстовых меток
+                const strengthMap = {
+                    1: '1 шот (18 г)',
+                    2: '2 шота (36 г)',
+                    3: '3 шота (54 г)'
+                };
+                strengthLabel.textContent = strengthMap[drinkState.strength];
+                syrupLabel.textContent = drinkState.syrup === 'Без сиропа' ? 'Без сахара' : drinkState.syrup;
+
+                const drinkBaseName = drinkState.milk.includes('Без молока') ? 'Американо / Фильтр' : 'Флэт Уайт';
+                const shortBean = drinkState.bean.split(' ')[0];
+                recipeTitle.textContent = `${drinkBaseName} на ${shortBean}`;
+                recipeDesc.textContent = `${strengthMap[drinkState.strength]} • ${drinkState.milk} • ${drinkState.syrup}`;
+                recipePrice.textContent = `${total} ₽`;
+
+                // Анимация слоев в SVG-стакане
+                cupMilkLayer.setAttribute('fill', drinkState.milkColor);
+                const coffeeHeights = { 1: 35, 2: 55, 3: 78 };
+                const h = coffeeHeights[drinkState.strength];
+                cupCoffeeLayer.setAttribute('y', 169 - h);
+                cupCoffeeLayer.setAttribute('height', h);
+            }
+
+            beanBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    beanBtns.forEach(b => {
+                        b.classList.remove('border-2', 'border-terracotta', 'bg-coffee-900/90');
+                        b.classList.add('border', 'border-coffee-600', 'bg-coffee-900/40');
+                    });
+                    btn.classList.remove('border', 'border-coffee-600', 'bg-coffee-900/40');
+                    btn.classList.add('border-2', 'border-terracotta', 'bg-coffee-900/90');
+
+                    drinkState.bean = btn.dataset.bean;
+                    drinkState.beanPrice = Number(btn.dataset.price);
+                    updateDrinkVisualizer();
+                });
+            });
+
+            milkBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    milkBtns.forEach(b => {
+                        b.classList.remove('border-2', 'border-terracotta', 'bg-coffee-900/90', 'text-white');
+                        b.classList.add('border', 'border-coffee-600', 'bg-coffee-900/40', 'text-coffee-200');
+                    });
+                    btn.classList.remove('border', 'border-coffee-600', 'bg-coffee-900/40', 'text-coffee-200');
+                    btn.classList.add('border-2', 'border-terracotta', 'bg-coffee-900/90', 'text-white');
+
+                    drinkState.milk = btn.dataset.milk;
+                    drinkState.milkColor = btn.dataset.color;
+                    drinkState.milkPrice = Number(btn.dataset.price);
+                    updateDrinkVisualizer();
+                });
+            });
+
+            strengthRange.addEventListener('input', (e) => {
+                drinkState.strength = Number(e.target.value);
+                updateDrinkVisualizer();
+            });
+
+            syrupSelect.addEventListener('change', (e) => {
+                const selected = e.target.options[e.target.selectedIndex];
+                drinkState.syrup = selected.value;
+                drinkState.syrupPrice = Number(selected.dataset.price);
+                updateDrinkVisualizer();
+            });
+
+            // Перенос рецепта из конструктора в форму заказа
+            applyRecipeBtn.addEventListener('click', () => {
+                const orderTextarea = document.getElementById('order-details');
+                orderTextarea.value = `Авторский напиток: ${recipeTitle.textContent} (${recipeDesc.textContent}) — ${recipePrice.textContent}`;
+                document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // 3. Фильтрация галереи и лайтбокс
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-coffee-900', 'text-white');
+                        b.classList.add('bg-coffee-200/70', 'text-coffee-800');
+                    });
+                    btn.classList.remove('bg-coffee-200/70', 'text-coffee-800');
+                    btn.classList.add('bg-coffee-900', 'text-white');
+
+                    const filter = btn.dataset.filter;
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            const lightboxModal = document.getElementById('lightbox-modal');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const closeLightbox = document.getElementById('close-lightbox');
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    lightboxImg.src = img.src;
+                    lightboxCaption.textContent = item.dataset.title;
+                    lightboxModal.classList.remove('hidden');
+                });
+            });
+
+            closeLightbox.addEventListener('click', () => lightboxModal.classList.add('hidden'));
+            lightboxModal.addEventListener('click', (e) => {
+                if (e.target === lightboxModal) lightboxModal.classList.add('hidden');
+            });
+
+            // 4. Обработка формы предзаказа / записи на каппинг
+            const orderForm = document.getElementById('order-form');
+            const orderModal = document.getElementById('order-modal');
+            const orderModalText = document.getElementById('order-modal-text');
+            const closeOrderModal = document.getElementById('close-order-modal');
+
+            orderForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('client-name').value.trim();
+                const phone = document.getElementById('client-phone').value.trim();
+                const type = document.querySelector('input[name="orderType"]:checked').value;
+                const time = document.getElementById('pickup-time').value;
+
+                orderModalText.textContent = `${name}, мы получили вашу заявку («${type}») на ${time} в кофейню по адресу г. Майкоп, ул. Краснооктябрьская, д. 28. Бариста свяжется с вами по контакту ${phone} в течение 5 минут для подтверждения.`;
+                orderModal.classList.remove('hidden');
+            });
+
+            closeOrderModal.addEventListener('click', () => {
+                orderModal.classList.add('hidden');
+            });
+            orderModal.addEventListener('click', (e) => {
+                if (e.target === orderModal) orderModal.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
